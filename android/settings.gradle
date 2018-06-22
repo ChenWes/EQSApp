@@ -1,0 +1,3 @@
+rootProject.name = 'EQSApp'
+
+include ':app'
