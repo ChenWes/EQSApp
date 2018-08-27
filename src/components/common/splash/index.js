@@ -22,7 +22,7 @@ class SplashComponent extends Component {
             <View style={styles.container}>
                 <View style={styles.logoContainer}>
                     <ImageBackground source={launchscreenLogo} style={styles.logo} />
-                    <Text style={styles.versionText}>V1.0.0</Text>
+                    <Text style={styles.versionText}>V{DeviceInfo.getVersion()}</Text>
                 </View>
             </View>
         );

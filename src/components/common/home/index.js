@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ImageBackground, Dimensions, StyleSheet, View, ScrollView, StatusBar } from "react-native";
-import { Container, Button, Text } from "native-base";
+import { Container, Button, Text, Toast } from "native-base";
 import DeviceInfo from 'react-native-device-info';
 
 // import styles from "./styles";
@@ -15,6 +15,12 @@ class HomeComponent extends Component {
   componentWillMount() {
     //check login or not
     if (!this.props.userEntity.isAuthenticated) {
+      Toast.show({
+        text: 'please login',
+        buttonText: 'Ok',
+        position: "top",
+        type: "warning"
+      });
       this.props.navigation.navigate('UserLogin');
     } else {
       // this.props.navigation.openDrawer();
@@ -34,7 +40,7 @@ class HomeComponent extends Component {
           <ScrollView>
             <Text style={styles.firstText}>EQS Mobile Application</Text>
             <Text style={styles.secondText}>Esquel Group IT</Text>
-            <Text style={styles.versionText}>V1.0.0</Text>
+            <Text style={styles.versionText}>V{DeviceInfo.getVersion()}</Text>
             {
               !IsTablet &&
               <Text style={styles.mobileText}>当前的设备是手机，适配可能会出现一些问题，如有问题请与管理员联系</Text>
